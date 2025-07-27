@@ -190,9 +190,10 @@ gradle-app.setting
 # Java heap dump
 *.hprof
 
-
 *.yml
 !.github/workflows/deploy.yml
+
+*.iml
 
 src/main/generated
 
