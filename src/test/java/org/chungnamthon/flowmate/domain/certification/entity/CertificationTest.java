@@ -1,13 +1,10 @@
 package org.chungnamthon.flowmate.domain.certification.entity;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.assertj.core.api.Assertions;
-import org.chungnamthon.flowmate.domain.challenge.entity.Challenge;
 import org.chungnamthon.flowmate.domain.challenge.entity.ChallengeFixture;
 import org.chungnamthon.flowmate.domain.challengeparticipant.entity.ChallengeParticipant;
-import org.chungnamthon.flowmate.domain.member.entity.Member;
 import org.chungnamthon.flowmate.domain.member.entity.MemberFixture;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
