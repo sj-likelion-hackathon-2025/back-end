@@ -3,7 +3,6 @@ package org.chungnamthon.flowmate.domain.challenge.entity;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.time.LocalDate;
 import org.chungnamthon.flowmate.domain.challenge.entity.dto.ChallengeCreateDomainRequest;
 import org.chungnamthon.flowmate.domain.member.entity.Category;
 import org.junit.jupiter.api.BeforeEach;

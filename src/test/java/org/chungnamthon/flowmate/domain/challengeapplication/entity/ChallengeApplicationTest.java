@@ -1,6 +1,7 @@
 package org.chungnamthon.flowmate.domain.challengeapplication.entity;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.assertj.core.api.Assertions;
 import org.chungnamthon.flowmate.domain.challenge.entity.Challenge;

@@ -2,11 +2,8 @@ package org.chungnamthon.flowmate.domain.challengeparticipant.entity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.chungnamthon.flowmate.domain.challenge.entity.Challenge;
 import org.chungnamthon.flowmate.domain.challenge.entity.ChallengeFixture;
-import org.chungnamthon.flowmate.domain.member.entity.Member;
 import org.chungnamthon.flowmate.domain.member.entity.MemberFixture;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
