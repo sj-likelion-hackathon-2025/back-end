@@ -18,8 +18,8 @@ class ChallengeTest {
 
     @BeforeEach
     void setUp() {
-        request = getChallengeCreateDomainRequest();
-        challenge = Challenge.create(request);
+        request = ChallengeFixture.getChallengeCreateDomainRequest();
+        challenge = ChallengeFixture.createChallenge();
     }
 
     @DisplayName("챌린지를 생성한다.")
@@ -79,18 +79,6 @@ class ChallengeTest {
         assertThat(challenge)
                 .extracting(Challenge::getTitle, Challenge::getIntroduction, Challenge::getCategory, Challenge::getRule)
                 .containsExactly(updatedTitle,          updatedIntroduction,        updatedCategory,         updateRule);
-    }
-
-    private ChallengeCreateDomainRequest getChallengeCreateDomainRequest() {
-        return ChallengeCreateDomainRequest.builder()
-                .title("아침 러닝 챌린지")
-                .introduction("매일 아침 7시에 러닝을 인증하는 챌린지입니다.")
-                .category(Category.DIET)
-                .startDate(LocalDate.of(2025, 8, 1))
-                .endDate(LocalDate.of(2025, 8, 5))
-                .maxParticipants(5L)
-                .rule("지정된 시간 내 운동 인증샷을 업로드해야 합니다.")
-                .build();
     }
 
 }

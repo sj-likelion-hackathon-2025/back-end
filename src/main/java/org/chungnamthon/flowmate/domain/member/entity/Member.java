@@ -4,14 +4,14 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.chungnamthon.flowmate.domain.BaseEntity;
 
-@Builder
+@Table(name = "member")
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -43,15 +43,18 @@ public class Member extends BaseEntity {
     private String refreshToken;
 
     public static Member createMember(String email, String name, String profileImgUrl, String socialId) {
-        return Member.builder()
-                .email(email)
-                .name(name)
-                .role(Role.ROLE_GUEST)
-                .grade(Grade.ROOKIE)
-                .point(0L)
-                .profileImgUrl(profileImgUrl)
-                .socialId(socialId)
-                .build();
+        Member member = new Member();
+
+        member.email = email;
+        member.name = name;
+        member.role = Role.ROLE_GUEST;
+        member.grade = Grade.ROOKIE;
+        member.point = 0L;
+        member.profileImgUrl = profileImgUrl;
+        member.socialId = socialId;
+        member.refreshToken = null;
+
+        return member;
     }
 
     public void updatePoint(Long point) {

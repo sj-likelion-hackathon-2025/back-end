@@ -12,7 +12,7 @@ class MemberTest {
 
     @BeforeEach
     void setUp() {
-        member = Member.createMember("test@email.com", "kwak", "testImageUrl", "123456");
+        member = MemberFixture.createMember();
     }
 
     @DisplayName("멤버를 생성한다")
