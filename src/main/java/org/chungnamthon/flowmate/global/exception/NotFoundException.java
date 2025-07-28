@@ -8,4 +8,8 @@ public class NotFoundException extends RootException {
         super(status);
     }
 
+    public NotFoundException(ErrorStatus status, Throwable cause) {
+        super(status, cause);
+    }
+
 }

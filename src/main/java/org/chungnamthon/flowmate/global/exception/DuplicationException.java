@@ -8,4 +8,8 @@ public class DuplicationException extends RootException {
         super(status);
     }
 
+    public DuplicationException(ErrorStatus status, Throwable cause) {
+        super(status, cause);
+    }
+
 }

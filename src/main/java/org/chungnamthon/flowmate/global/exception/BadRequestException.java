@@ -8,4 +8,8 @@ public class BadRequestException extends RootException {
         super(status);
     }
 
+    public BadRequestException(ErrorStatus status, Throwable cause) {
+        super(status, cause);
+    }
+
 }

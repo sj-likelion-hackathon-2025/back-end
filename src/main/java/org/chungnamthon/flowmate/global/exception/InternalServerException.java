@@ -8,4 +8,8 @@ public class InternalServerException extends RootException {
         super(status);
     }
 
+    public InternalServerException(ErrorStatus status, Throwable cause) {
+        super(status, cause);
+    }
+
 }

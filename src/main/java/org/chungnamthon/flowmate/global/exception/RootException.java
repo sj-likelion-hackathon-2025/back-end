@@ -13,4 +13,9 @@ public abstract class RootException extends RuntimeException {
         this.errorStatus = status;
     }
 
+    protected RootException(ErrorStatus status, Throwable cause) {
+        super(status.getMessage(), cause);
+        this.errorStatus = status;
+    }
+
 }
