@@ -8,4 +8,8 @@ public class ForbiddenException extends RootException {
         super(status);
     }
 
+    public ForbiddenException(ErrorStatus status, Throwable cause) {
+        super(status, cause);
+    }
+
 }

@@ -8,4 +8,8 @@ public class UnAuthenticationException extends RootException {
         super(status);
     }
 
+    public UnAuthenticationException(ErrorStatus status, Throwable cause) {
+        super(status, cause);
+    }
+
 }
