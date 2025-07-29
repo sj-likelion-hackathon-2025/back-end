@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.chungnamthon.flowmate.global.exception.dto.ErrorStatus;
 import org.chungnamthon.flowmate.global.exception.dto.response.ErrorResponse;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
