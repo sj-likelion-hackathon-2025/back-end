@@ -196,6 +196,6 @@ gradle-app.setting
 *.iml
 
 src/main/generated
-
+test.png
 mysql_data
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all,java,gradle,macos,git
