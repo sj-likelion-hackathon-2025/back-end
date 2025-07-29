@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import org.chungnamthon.flowmate.domain.member.service.dto.MemberCreateServiceRequest;
 import org.springframework.web.multipart.MultipartFile;
 
-public record MemberCreateRequest(
+public record MemberProfileRegisterRequest(
         @NotBlank(message = "이름은 필수 값입니다.")
         String name
 ) {
