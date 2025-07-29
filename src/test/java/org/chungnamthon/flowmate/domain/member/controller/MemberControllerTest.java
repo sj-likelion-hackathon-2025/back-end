@@ -2,6 +2,7 @@ package org.chungnamthon.flowmate.domain.member.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doNothing;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 
@@ -10,8 +11,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.chungnamthon.flowmate.domain.member.controller.dto.MemberCheckNameRequest;
 import org.chungnamthon.flowmate.domain.member.controller.dto.MemberProfileRegisterRequest;
+import org.chungnamthon.flowmate.domain.member.entity.Grade;
 import org.chungnamthon.flowmate.domain.member.service.MemberCommandService;
 import org.chungnamthon.flowmate.domain.member.service.MemberQueryService;
+import org.chungnamthon.flowmate.domain.member.service.dto.MemberProfileResponse;
+import org.chungnamthon.flowmate.global.security.TestMember;
 import org.chungnamthon.flowmate.global.security.TestSecurityConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -44,7 +48,7 @@ class MemberControllerTest {
                 "image",
                 "profile.jpg",
                 "image/jpeg",
-                "profile image content".getBytes()
+                "profile image content" .getBytes()
         );
         var requestPart = new MockMultipartFile(
                 "request",
@@ -79,6 +83,26 @@ class MemberControllerTest {
                 .exchange();
 
         assertThat(result).hasStatusOk();
+    }
+
+    @TestMember
+    @DisplayName("회원 정보를 가져온다")
+    @Test
+    void getProfile() {
+        var response = new MemberProfileResponse("name", "image", Grade.ROOKIE, 0L);
+        given(memberQueryService.getProfile(any())).willReturn(response);
+
+        var result = mvcTester.get().uri("/members")
+                .contentType(MediaType.APPLICATION_JSON)
+                .exchange();
+
+        assertThat(result)
+                .hasStatusOk()
+                .bodyJson()
+                .hasPathSatisfying("$.name", v -> v.assertThat().isEqualTo(response.name()))
+                .hasPathSatisfying("$.image", v -> v.assertThat().isEqualTo(response.image()))
+                .hasPathSatisfying("$.grade", v -> v.assertThat().isEqualTo(response.grade().name()))
+                .hasPathSatisfying("$.point", v -> v.assertThat().asNumber().isEqualTo(response.point().intValue()));
     }
 
 }

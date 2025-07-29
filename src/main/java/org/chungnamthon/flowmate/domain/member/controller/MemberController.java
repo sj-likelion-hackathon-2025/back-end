@@ -6,8 +6,10 @@ import org.chungnamthon.flowmate.domain.member.controller.dto.MemberCheckNameReq
 import org.chungnamthon.flowmate.domain.member.controller.dto.MemberProfileRegisterRequest;
 import org.chungnamthon.flowmate.domain.member.service.MemberCommandService;
 import org.chungnamthon.flowmate.domain.member.service.MemberQueryService;
+import org.chungnamthon.flowmate.domain.member.service.dto.MemberProfileResponse;
 import org.chungnamthon.flowmate.global.annotation.AuthMember;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -38,6 +40,13 @@ public class MemberController {
         memberQueryService.checkNameDuplicate(request.name());
 
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<MemberProfileResponse> getProfile(@AuthMember Long memberId) {
+        MemberProfileResponse response = memberQueryService.getProfile(memberId);
+
+        return  ResponseEntity.ok(response);
     }
 
 }
