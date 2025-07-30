@@ -11,9 +11,12 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = {EnumValidator.class})
 public @interface EnumValid {
+
     String message() default "";
 
     Class<?>[] groups() default { };
+
+    Class<? extends Payload>[] payload() default { };
 
     Class<? extends Enum<?>> enumClass();
 
