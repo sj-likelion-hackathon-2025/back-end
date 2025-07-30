@@ -85,7 +85,6 @@ class MemberControllerTest {
         assertThat(result).hasStatusOk();
     }
 
-    @TestMember
     @DisplayName("회원 정보를 가져온다")
     @Test
     void getProfile() {
