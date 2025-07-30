@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.assertj.MvcTestResult;
 
 class AuthControllerTest extends ControllerTestSupport {
 
-    @DisplayName("토큰을 재발급한다.")
+    @DisplayName("AccessToken과 RefreshToken 을 재발급한다.")
     @Test
     void reissue() throws JsonProcessingException {
         var tokenResponse = new TokenResponse("new-AT", "new-RT");
@@ -40,12 +40,9 @@ class AuthControllerTest extends ControllerTestSupport {
         verify(authService).reissue(request);
     }
 
-    @DisplayName("유효하지 않은 값 요청으로 재발급 실패")
+    @DisplayName("ReissueTokenServiceRequest를 빈값으로 요청 시 에러를 반환한다.")
     @Test
     void failReissue() throws JsonProcessingException {
-        var tokenResponse = new TokenResponse("new-AT", "new-RT");
-        given(authService.reissue(any())).willReturn(tokenResponse);
-
         var request = new ReissueTokenServiceRequest("");
         String requestJson = objectMapper.writeValueAsString(request);
 

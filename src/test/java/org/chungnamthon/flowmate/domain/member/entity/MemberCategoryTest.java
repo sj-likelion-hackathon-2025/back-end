@@ -11,12 +11,13 @@ class MemberCategoryTest {
     @Test
     void create() {
         var memberId = 1L;
-        Category category = Category.EXERCISE;
+        var category = Category.EXERCISE;
 
-        MemberCategory memberCategory = MemberCategory.create(memberId, category);
+        var memberCategory = MemberCategory.create(memberId, category);
 
-        assertThat(memberCategory.getMemberId()).isEqualTo(memberId);
-        assertThat(memberCategory.getCategory()).isEqualTo(category);
+        assertThat(memberCategory)
+                .extracting(MemberCategory::getMemberId, MemberCategory::getCategory)
+                .containsExactly(              memberId,                    category);
     }
 
 }

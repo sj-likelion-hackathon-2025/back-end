@@ -85,7 +85,7 @@ class MemberControllerTest {
         assertThat(result).hasStatusOk();
     }
 
-    @DisplayName("회원 정보를 가져온다")
+    @DisplayName("회원 프로필 정보를 가져온다")
     @Test
     void getProfile() {
         var response = new MemberProfileResponse("name", "image", Grade.ROOKIE, 0L);

@@ -52,7 +52,7 @@ class ChallengeApplicationControllerTest extends ControllerTestSupport {
                 .bodyJson();
     }
 
-    @DisplayName("리더가 챌린지 신청 승인 여부를 결정한다.")
+    @DisplayName("리더가 챌린지 신청 승인 결과를 보낸다.")
     @Test
     void approve() throws JsonProcessingException {
         var challengeId = 1L;

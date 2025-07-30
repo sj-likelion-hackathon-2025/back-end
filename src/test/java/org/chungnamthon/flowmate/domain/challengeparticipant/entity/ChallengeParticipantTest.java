@@ -31,7 +31,7 @@ class ChallengeParticipantTest {
         assertThat(general.getRole()).isEqualTo(ChallengeRole.GENERAL);
     }
 
-    @DisplayName("챌린지 참여자의 권한을 변경한다.")
+    @DisplayName("챌린지 참여자의 권한을 Leader로 변경한다.")
     @Test
     void updateRole() {
         var member = MemberFixture.createMember();

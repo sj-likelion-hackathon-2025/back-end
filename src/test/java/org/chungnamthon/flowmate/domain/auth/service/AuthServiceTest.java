@@ -24,7 +24,7 @@ record AuthServiceTest(
         EntityManager entityManager
 ) {
 
-    @DisplayName("토큰을 재발급한다.")
+    @DisplayName("AT와 RT를 재발급한다.")
     @Test
     void reissue() {
         var member = MemberFixture.createMember();
@@ -42,7 +42,7 @@ record AuthServiceTest(
         assertThat(result.refreshToken()).isNotNull();
     }
 
-    @DisplayName("요청 RT와 회원 RT가 달라 재발급에 실패한다.")
+    @DisplayName("요청 RT와 회원 RT가 다를 경우 에러를 반환한다.")
     @Test
     void failReissue() {
         var member = MemberFixture.createMember();

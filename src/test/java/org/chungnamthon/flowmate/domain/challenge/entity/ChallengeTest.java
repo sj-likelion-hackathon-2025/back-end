@@ -38,7 +38,7 @@ class ChallengeTest {
         assertThat(challenge.getStatus()).isEqualTo(ChallengeStatus.IN_PROGRESS);
     }
 
-    @DisplayName("챌린지 상태가 시작 전인 경우에만 진행중 상태로 변경할 수 있다.")
+    @DisplayName("챌린지 상태가 시작 전이 아닌데 챌린지 진행중 상태로 변경할 경우 에러를 반환한다.")
     @Test
     void failUpdateStatusToInProgress() {
         challenge.updateStatusToInProgress();
@@ -48,7 +48,7 @@ class ChallengeTest {
             .isInstanceOf(IllegalStateException.class);
     }
 
-    @DisplayName("챌린지가 종료되면 상태를 완료로 변경한다.")
+    @DisplayName("챌린지가 종료되면 챌린지 상태를 완료로 변경한다.")
     @Test
     void updateStatusToComplete() {
         challenge.updateStatusToInProgress();
@@ -58,7 +58,7 @@ class ChallengeTest {
         assertThat(challenge.getStatus()).isEqualTo(ChallengeStatus.COMPLETED);
     }
 
-    @DisplayName("챌린지 상태가 진행중일 경우에 완료 상태로 변경할 수 있다.")
+    @DisplayName("챌린지 상태가 진행중이지 않을 때 완료 상태로 변경할 경우 에러를 반환한다.")
     @Test
     void failUpdateStatusToComplete() {
         assertThatThrownBy(() -> challenge.updateStatusToComplete())
