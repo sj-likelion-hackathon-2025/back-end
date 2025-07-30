@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ChallengeApplicationJpaRepository extends JpaRepository<ChallengeApplication, Long> {
 
+    boolean existsByMemberIdAndChallengeId(Long memberId, Long challengeId);
 }
