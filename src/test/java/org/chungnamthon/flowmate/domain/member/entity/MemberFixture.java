@@ -8,6 +8,10 @@ public class MemberFixture {
         return Member.createMember("test@email.com", name, "testImageUrl", "123456");
     }
 
+    public static Member createMember(String name, String email) {
+        return Member.createMember(email, name, "testImageUrl", "123456");
+    }
+
     public static Member createMember() {
         return createMember("kwak");
     }
