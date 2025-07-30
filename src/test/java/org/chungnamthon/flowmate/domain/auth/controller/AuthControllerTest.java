@@ -7,31 +7,15 @@ import static org.mockito.Mockito.verify;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.RequiredArgsConstructor;
-import org.chungnamthon.flowmate.domain.auth.service.AuthService;
+import org.chungnamthon.flowmate.ControllerTestSupport;
 import org.chungnamthon.flowmate.domain.auth.service.dto.ReissueTokenServiceRequest;
-import org.chungnamthon.flowmate.global.security.TestSecurityConfig;
 import org.chungnamthon.flowmate.global.security.jwt.dto.TokenResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
-import org.springframework.test.web.servlet.assertj.MockMvcTester;
 import org.springframework.test.web.servlet.assertj.MvcTestResult;
 
-@RequiredArgsConstructor
-@Import(TestSecurityConfig.class)
-@WebMvcTest(AuthController.class)
-class AuthControllerTest {
-
-    final MockMvcTester mvcTester;
-    final ObjectMapper objectMapper;
-
-    @MockitoBean
-    private AuthService authService;
+class AuthControllerTest extends ControllerTestSupport {
 
     @DisplayName("토큰을 재발급한다.")
     @Test
