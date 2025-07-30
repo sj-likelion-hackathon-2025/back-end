@@ -3,30 +3,14 @@ package org.chungnamthon.flowmate.domain.challenge.controller;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.RequiredArgsConstructor;
+import org.chungnamthon.flowmate.ControllerTestSupport;
 import org.chungnamthon.flowmate.domain.challenge.controller.dto.ChallengeCreateRequest;
-import org.chungnamthon.flowmate.domain.challenge.service.ChallengeCommandService;
 import org.chungnamthon.flowmate.domain.member.entity.Category;
-import org.chungnamthon.flowmate.global.security.TestSecurityConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
-import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
-@RequiredArgsConstructor
-@Import(TestSecurityConfig.class)
-@WebMvcTest(ChallengeController.class)
-class ChallengeControllerTest {
-
-    final MockMvcTester mvcTester;
-    final ObjectMapper objectMapper;
-
-    @MockitoBean
-    private ChallengeCommandService challengeCommandService;
+class ChallengeControllerTest extends ControllerTestSupport {
 
     @DisplayName("챌린지 생성을 한다.")
     @Test

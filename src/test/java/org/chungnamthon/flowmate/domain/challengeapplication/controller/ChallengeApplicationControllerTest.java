@@ -6,34 +6,18 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.RequiredArgsConstructor;
+import org.chungnamthon.flowmate.ControllerTestSupport;
 import org.chungnamthon.flowmate.domain.challengeapplication.controller.dto.ChallengeApplicationApproveRequest;
 import org.chungnamthon.flowmate.domain.challengeapplication.controller.dto.ChallengeApplicationCreateRequest;
 import org.chungnamthon.flowmate.domain.challengeapplication.entity.ApplicationStatus;
-import org.chungnamthon.flowmate.domain.challengeapplication.service.ChallengeApplicationCommandService;
 import org.chungnamthon.flowmate.domain.challengeapplication.service.dto.ChallengeApplicationApproveServiceRequest;
 import org.chungnamthon.flowmate.domain.challengeapplication.service.dto.ChallengeApplicationCreateServiceRequest;
-import org.chungnamthon.flowmate.global.security.TestSecurityConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
-import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
-@RequiredArgsConstructor
-@Import(TestSecurityConfig.class)
-@WebMvcTest(ChallengeApplicationController.class)
-class ChallengeApplicationControllerTest {
-
-    final MockMvcTester mvcTester;
-    final ObjectMapper objectMapper;
-
-    @MockitoBean
-    private ChallengeApplicationCommandService challengeApplicationCommandService;
+class ChallengeApplicationControllerTest extends ControllerTestSupport {
 
     @DisplayName("챌린지 신청을 한다")
     @Test
