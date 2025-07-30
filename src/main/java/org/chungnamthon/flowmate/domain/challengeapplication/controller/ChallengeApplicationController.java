@@ -2,6 +2,7 @@ package org.chungnamthon.flowmate.domain.challengeapplication.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.chungnamthon.flowmate.domain.challengeapplication.controller.dto.ChallengeApplicationApproveRequest;
 import org.chungnamthon.flowmate.domain.challengeapplication.controller.dto.ChallengeApplicationCreateRequest;
 import org.chungnamthon.flowmate.domain.challengeapplication.service.ChallengeApplicationCommandService;
 import org.chungnamthon.flowmate.global.annotation.AuthMember;
@@ -26,6 +27,18 @@ public class ChallengeApplicationController {
             @PathVariable Long challengeId
     ) {
         challengeApplicationCommandService.apply(request.toServiceRequest(memberId, challengeId));
+
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/{challengeId}/applications/{applicationId}")
+    public ResponseEntity<Void> approve(
+            @Valid @RequestBody ChallengeApplicationApproveRequest request,
+            @AuthMember Long memberId,
+            @PathVariable Long challengeId,
+            @PathVariable Long applicationId
+    ) {
+        challengeApplicationCommandService.approve(request.toServiceRequest(memberId, challengeId, applicationId));
 
         return ResponseEntity.ok().build();
     }
