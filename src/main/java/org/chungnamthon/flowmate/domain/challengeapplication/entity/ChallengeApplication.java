@@ -50,6 +50,7 @@ public class ChallengeApplication extends BaseEntity {
     }
 
     public void updateStatus(ApplicationStatus status) {
+        // IllegalStateException을 던진다.
         state(this.status == ApplicationStatus.PENDING, "승인 여부를 변경 할 수 없습니다.");
 
         this.status = status;
