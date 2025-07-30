@@ -57,4 +57,8 @@ public class ChallengeParticipant extends BaseEntity {
         this.role = role;
     }
 
+    public boolean isLeader() {
+        return this.role == ChallengeRole.LEADER;
+    }
+
 }
