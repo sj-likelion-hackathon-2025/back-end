@@ -33,8 +33,9 @@ class MemberTest {
         assertThat(member.getGrade()).isEqualTo(Grade.PRO);
         // 등급 강등
         member.updatePoint(-100L);
-        assertThat(member.getPoint()).isEqualTo(900L);
-        assertThat(member.getGrade()).isEqualTo(Grade.JUNIOR);
+        assertThat(member)
+                .extracting(Member::getPoint, Member::getGrade)
+                .containsExactly(       900L,     Grade.JUNIOR);
     }
 
     @DisplayName("RT를 변경한다.")
